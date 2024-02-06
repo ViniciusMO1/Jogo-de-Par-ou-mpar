@@ -1,0 +1,32 @@
+from random import randint
+from PIL import Image
+
+cont = 0
+
+while True:
+    usuario = int(input('Digite um valor: '))
+    maquina = randint(1, 10)
+    total = usuario + maquina
+    a = str(input('Valor par ou ímpar? [P/I]: '))
+
+    # Exibindo imagem correspondente à escolha do usuário
+    if a == 'P':
+        img_path = 'par.png'
+    else:
+        img_path = 'impar.png'
+
+    img = Image.open(img_path)
+    img.show()
+
+    if a == 'P' and total % 2 == 0:
+        print(f'Número PAR {total}!! O computador escolheu {maquina} e você escolheu {usuario}. VOCÊ GANHOU, PARABÉNS!!')
+    elif a == 'I' and total % 2 == 1:
+        print(f'Número ÍMPAR {total}!!! Você ganhou, você escolheu {usuario} e a máquina {maquina}. PARABÉNS!!')
+    else:
+        print(f'Você perdeu! O computador escolheu {maquina} e você escolheu {usuario}. VOCÊ PERDEU!!')
+        break
+
+    cont += 1
+
+print(f'Total de tentativas = {cont}')
+print('FIM')
